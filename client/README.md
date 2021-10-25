@@ -1,4 +1,4 @@
 
-Start: cd client > npm i;
-       cd server > npm run dev ;
-       cd client > npm run start;
+Start: 1) cd client > npm i -force > npm start
+       2) cd server > npm i > npm run dev
+       

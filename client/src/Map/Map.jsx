@@ -1,4 +1,5 @@
 import React from "react"
+import {Button} from 'react-bootstrap'
 import {
   ComposableMap,
   Geographies,
@@ -8,9 +9,16 @@ import {
 
 const geoUrl = "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json"
 
-const Map = ({markers}) => {
+const Map = ({markers, distance, recalculate}) => {
   
-    return <ComposableMap>
+    return <>
+        <span>
+          <Button style= {{color: 'black', marginTop: -7, marginLeft: 100}} variant= 'primary'  onClick= {recalculate}> Другая точка </Button>
+        </span>
+        <span style= {{display: 'inline-block', fontSize: 21, paddingLeft: 17, fontWeight: 400, maxWidth: 390, maxHeight: 40, width: 390, height:40, marginLeft: 350, marginTop: 20 }}>
+          Расстояние между точками: {distance}
+        </span>
+        <ComposableMap>
     <Geographies geography={geoUrl}>
       {({geographies}) => geographies.map(geo =>
         <Geography key={geo.rsmKey} geography={geo} />
@@ -32,13 +40,14 @@ const Map = ({markers}) => {
       <text
         textAnchor="middle"
         y={markerOffset}
-        style={{ fontFamily: "system-ui", fill: "#5D5A6D" }}
+        style={{ fontFamily: "system-ui", fill: "#008000", fontSize: 12 }}
       >
         {name}
       </text>
     </Marker>
   ))}
   </ComposableMap>
+    </>
 }
 
 export default Map
